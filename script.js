@@ -1,4 +1,5 @@
 // Write your JavaScript code here!
+// const scriptFunctions = require("./scriptHelper");
 
 
 window.addEventListener("load", function() {
@@ -12,10 +13,8 @@ window.addEventListener("load", function() {
     let fuelLevelInput = document.querySelector("input[name=fuelLevel]");
     let cargoMassInput = document.querySelector("input[name=cargoMass]");
 
-    const scriptHelper = require("./scriptHelper");
-
-    scriptHelper.formSubmission(document, pilotNameInput, copilotNameInput, fuelLevelInput, cargoMassInput);
-
+    formSubmission(document, pilotNameInput, copilotNameInput, fuelLevelInput, cargoMassInput);
+    // alert("Form submission function ran.");
     });
     
 
