@@ -7,13 +7,14 @@ window.addEventListener("load", function() {
     let form = document.querySelector("form");
     form.addEventListener("submit", function(event) {
         // alert("Submit clicked.");
-
+    
     let pilotNameInput = document.querySelector("input[name=pilotName]");
     let copilotNameInput = document.querySelector("input[name=copilotName]");
+    let faultyItems = document.getElementById("faultyItems");
     let fuelLevelInput = document.querySelector("input[name=fuelLevel]");
     let cargoMassInput = document.querySelector("input[name=cargoMass]");
 
-    formSubmission(document, pilotNameInput, copilotNameInput, fuelLevelInput, cargoMassInput);
+    formSubmission(document, faultyItems, pilotNameInput, copilotNameInput, fuelLevelInput, cargoMassInput);
     // alert("Form submission function ran.");
     });
     

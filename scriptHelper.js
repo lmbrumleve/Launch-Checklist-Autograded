@@ -21,14 +21,14 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     if (testInput === "") {
         return "Empty";
     } else if (isNaN(testInput) === true) {
-        return "Not a number."
+        return "Not a Number"
     } else if (isNaN(testInput) === false) {
-        return "Is a number."
+        return "Is a Number"
     }
     
  }
  
- function formSubmission(document, pilot, copilot, fuelLevel, cargoMass) {
+ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
 
 //Validate user input.
 
@@ -37,8 +37,6 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     fuelLevel.value === "" ||
     cargoMass.value === "") {
     alert("All fields are required!");
-    // stop the form submission
-    // event.preventDefault();    
 
 } 
 // else {
@@ -50,15 +48,18 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 //     `);
 // }
 
-    if (validateInput(pilot.value) === "Is a number.") {
+    if (validateInput(pilot.value) === "Is a Number") {
         alert("Invalid input. Pilot name is a number.");
-        // stop the form submission
-        // event.preventDefault();    
 
-    } else if (validateInput(copilot.value) === "Is a number.") {
+    } else if (validateInput(copilot.value) === "Is a Number") {
         alert("Invalid input. Copilot name is a number.");
-        // stop the form submission
-        // event.preventDefault();    
+    
+    // } else if (validateInput(fuelLevel.value) === "Not a Number") {
+    //     alert("Invalid input. Fuel level must be a number.");
+
+    // } else if (validateInput(cargoMass.value) === "Not a Number") {
+    //     alert("Invalid input. Cargo mass must be a number.")
+
     };
 
 //Update Shuttle Requirements
@@ -67,19 +68,19 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     const pilotStatus = document.getElementById("pilotStatus");
     const copilotStatus = document.getElementById("copilotStatus");
 
-    pilotStatus.innerHTML = `${pilot.value} ready.`; // update the element with id=pilotStatus to include pilot's name
-    copilotStatus.innerHTML = `${copilot.value} ready.`; //update the element with id=copilotStatus to include copilot's name
+    pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`; // update the element with id=pilotStatus to include pilot's name
+    copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`; //update the element with id=copilotStatus to include copilot's name
 
     if (fuelLevel.value < 10000) {
     //If fuelLevel < 10,000 L that is too low: 
     //1. Change faultyItems to "visible" with an updated fuelStatus to show there's not enough fuel.
-        document.getElementById("faultyItems").setAttribute("style", "visibility: visible");
+        list.setAttribute("style", "visibility: visible");
         const fuelStatus = document.getElementById("fuelStatus");
         fuelStatus.innerHTML = `Fuel level of ${fuelLevel.value} L is NOT high enough for launch.`
 
     //2. Change the text of <h2>, launchStatus, to "Shuttle not ready for launch."
         const launchStatus = document.getElementById("launchStatus")
-        launchStatus.innerHTML = "Shuttle not ready for launch."
+        launchStatus.innerHTML = "Shuttle Not Ready or Launch"
     
         //3. Change the color to red.
         launchStatus.setAttribute("style", "color: red");
@@ -88,13 +89,13 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     //If cargoMass > 10,000 kg that is too large. 
 
         //1. Change the list to visible with updated categories (too much mass for take off)
-        document.getElementById("faultyItems").setAttribute("style", "visibility: visible");
+        list.setAttribute("style", "visibility: visible");
     
         const cargoStatus = document.getElementById("cargoStatus");
         cargoStatus.innerHTML = `Cargo mass of ${cargoMass.value} kg is too high for take off.`
 
         //2. Change the text of launchStatus to "Shuttle not ready for launch."
-        launchStatus.innerHTML = "Shuttle not ready for launch."
+        launchStatus.innerHTML = "Shuttle Not Ready for Launch."
 
         //3. Change the color to red.
         launchStatus.setAttribute("style", "color: red")
@@ -103,8 +104,12 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     //If shuttle is ready to launch:
         
         //1. Change the text of launchStatus to green and display "Shuttle ready for launch."
+        const launchStatus = document.getElementById("launchStatus")
+
         launchStatus.setAttribute("style", "color: green");
-        launchStatus.innerHTML = "Shuttle ready for launch."
+        launchStatus.innerHTML = "Shuttle is Ready for Launch."
+        list.setAttribute("style", "visibility: visible");
+
 
 }
  }
