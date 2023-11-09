@@ -71,45 +71,51 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`; // update the element with id=pilotStatus to include pilot's name
     copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`; //update the element with id=copilotStatus to include copilot's name
 
-    if (fuelLevel.value < 10000) {
+    const launchStatus = document.getElementById("launchStatus");
+    const cargoStatus = document.getElementById("cargoStatus");
+    const fuelStatus = document.getElementById("fuelStatus");
+
+    if (fuelLevel.value >= 10000 && cargoMass.value <= 10000) {
+    //If shuttle is ready to launch:
+        
+        //1. Change the text of launchStatus to green and display "Shuttle ready for launch."
+        list.style.visibility = "visible";
+        launchStatus.innerHTML = "Shuttle is Ready for Launch."
+        launchStatus.style.color = "green";
+
+    } else if (fuelLevel.value < 10000 && cargoMass.value <= 10000) {
     //If fuelLevel < 10,000 L that is too low: 
+    
     //1. Change faultyItems to "visible" with an updated fuelStatus to show there's not enough fuel.
-        list.setAttribute("style", "visibility: visible");
-        const fuelStatus = document.getElementById("fuelStatus");
+        list.style.visibility = "visible";
         fuelStatus.innerHTML = `Fuel level of ${fuelLevel.value} L is NOT high enough for launch.`
 
     //2. Change the text of <h2>, launchStatus, to "Shuttle not ready for launch."
-        const launchStatus = document.getElementById("launchStatus")
         launchStatus.innerHTML = "Shuttle Not Ready or Launch"
     
         //3. Change the color to red.
-        launchStatus.setAttribute("style", "color: red");
+        launchStatus.style.color = "red";
 
-    } else if (cargoMass.value > 10000) {
+    } else if (fuelLevel.value >= 10000 && cargoMass.value > 10000) {
     //If cargoMass > 10,000 kg that is too large. 
 
         //1. Change the list to visible with updated categories (too much mass for take off)
-        list.setAttribute("style", "visibility: visible");
-    
-        const cargoStatus = document.getElementById("cargoStatus");
+        list.style.visibility = "visible"
         cargoStatus.innerHTML = `Cargo mass of ${cargoMass.value} kg is too high for take off.`
 
         //2. Change the text of launchStatus to "Shuttle not ready for launch."
         launchStatus.innerHTML = "Shuttle Not Ready for Launch."
 
         //3. Change the color to red.
-        launchStatus.setAttribute("style", "color: red")
+        launchStatus.style.color = "red";
     
-    } else {
-    //If shuttle is ready to launch:
-        
-        //1. Change the text of launchStatus to green and display "Shuttle ready for launch."
-        const launchStatus = document.getElementById("launchStatus")
-
-        launchStatus.setAttribute("style", "color: green");
-        launchStatus.innerHTML = "Shuttle is Ready for Launch."
-        list.setAttribute("style", "visibility: visible");
-
+    } else if (fuelLevel.value < 10000 && cargoMass.value > 10000) {
+    //If fuelLevel < 10,000 L AND cargoMass > 10,000 kg update both fuel status and cargo status.
+        list.style.visibility = "visible"    
+        fuelStatus.innerHTML = `Fuel level of ${fuelLevel.value} L is NOT high enough for launch.`
+        cargoStatus.innerHTML = `Cargo mass of ${cargoMass.value} kg is too high for take off.`
+        launchStatus.innerHTML = "Shuttle Not Ready for Launch."
+        launchStatus.style.color = "red";
 
 }
  }
