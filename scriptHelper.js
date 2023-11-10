@@ -8,7 +8,6 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     missionTarget.innerHTML =
 
     // Here is the HTML formatting for our mission target div.
-    
          `<h2>Mission Destination</h2>
              <ol>
                  <li>Name: ${name}</li>
@@ -57,11 +56,11 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     } else if (validateInput(copilot.value) === "Is a Number") {
         return alert("Invalid input. Copilot name is a number.");
     
-    } else if (validateInput(fuelLevel.value) === "Not a Number") {
-        return alert("Invalid input. Fuel level must be a number.");
+    // } else if (validateInput(fuelLevel.value) === "Not a Number") {
+    //     return alert("Invalid input. Fuel level must be a number.");
 
-    } else if (validateInput(cargoMass.value) === "Not a Number") {
-        return alert("Invalid input. Cargo mass must be a number.")
+    // } else if (validateInput(cargoMass.value) === "Not a Number") {
+    //     return alert("Invalid input. Cargo mass must be a number.")
 
     };
 
@@ -71,8 +70,8 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     const pilotStatus = document.getElementById("pilotStatus");
     const copilotStatus = document.getElementById("copilotStatus");
 
-    pilotStatus.innerHTML = `Pilot ${pilot.value} is ready for launch`; // update the element with id=pilotStatus to include pilot's name
-    copilotStatus.innerHTML = `Co-pilot ${copilot.value} is ready for launch`; //update the element with id=copilotStatus to include copilot's name
+    pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`; // update the element with id=pilotStatus to include pilot's name
+    copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`; //update the element with id=copilotStatus to include copilot's name
 
     const launchStatus = document.getElementById("launchStatus");
     const cargoStatus = document.getElementById("cargoStatus");
@@ -127,25 +126,22 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
         return;     
 
 }
-// list.style.visibility = "visible";
+list.style.visibility = "visible";
 
 }
 
- async function myFetch() {
-     let planetsReturned;
- 
-     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
-           response.json().then(function(json) {
-            return json;
-           });
-         });
+ async function myFetch() { 
+     let response = await fetch("https://handlers.education.launchcode.org/static/planets.json");
+     let planetsReturned = await response.json()
  
      return planetsReturned;
  }
+ console.log(myFetch());
  
  function pickPlanet(planets) {
     let randomPlanetIndex = Math.floor(Math.random()*planets.length);
-    return randomPlanetIndex;
+    let randomPlanet = planets[randomPlanetIndex];
+    return randomPlanet;
  }
  
 
