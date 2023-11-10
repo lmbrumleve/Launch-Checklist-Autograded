@@ -94,7 +94,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
         launchStatus.style.color = "red";
         return;     
 
-}
+} 
 // list.style.visibility = "visible";
 
 }
