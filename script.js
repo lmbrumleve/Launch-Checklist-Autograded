@@ -1,6 +1,6 @@
 // Write your JavaScript code here!
 
-const { pickPlanetFunction, addDestinationInfoFunction } = require("./scriptHelper");
+const { pickPlanet, addDestinationInfo } = require("./scriptHelper");
 
 
 window.addEventListener("load", function() {
@@ -58,9 +58,9 @@ window.addEventListener("load", function() {
     // .then(function () {
         console.log("not then " + listedPlanets);
         // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
-        let planet = pickPlanetFunction(listedPlanets);
+        let planet = pickPlanet(listedPlanets);
 
-        addDestinationInfoFunction(document, planet.name, planet.diameter, planet.star, planet.distance, planet.moons, planet.image);
+        addDestinationInfo(document, planet.name, planet.diameter, planet.star, planet.distance, planet.moons, planet.image);
     // })
     
  });
