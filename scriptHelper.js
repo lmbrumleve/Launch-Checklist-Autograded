@@ -48,10 +48,10 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 //     `);
 // }
 
-    if (validateInput(pilot) === "Is a Number") {
+    if (validateInput(pilot.value) === "Is a Number") {
         return alert("Invalid input. Pilot name is a number.");
 
-    } else if (validateInput(copilot) === "Is a Number") {
+    } else if (validateInput(copilot.value) === "Is a Number") {
         return alert("Invalid input. Copilot name is a number.");
     
     // } else if (validateInput(fuelLevel.value) === "Not a Number") {
