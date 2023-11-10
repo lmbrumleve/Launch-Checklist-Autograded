@@ -32,69 +32,37 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
  
  function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
 
-//Validate user input.
-
-    if (validateInput(pilot.value) === "Empty" || 
-    validateInput(copilot.value) === "Empty" ||
-    validateInput(fuelLevel.value) === "Empty" ||
-    validateInput(cargoMass.value) === "Epmty") {
-    return alert("All fields are required!");
-
-} 
-// else {
-//     alert(`
-//     Pilot Name: ${pilot.value}
-//     Copilot Name: ${copilot.value}
-//     Fuel Level: ${fuelLevel.value}
-//     Cargo Mass: ${cargoMass.value}
-//     `);
-// }
-
-    if (validateInput(pilot.value) === "Is a Number") {
-        return alert("Invalid input. Pilot name is a number.");
-
-    } else if (validateInput(copilot.value) === "Is a Number") {
-        return alert("Invalid input. Copilot name is a number.");
-    
-    // } else if (validateInput(fuelLevel.value) === "Not a Number") {
-    //     return alert("Invalid input. Fuel level must be a number.");
-
-    // } else if (validateInput(cargoMass.value) === "Not a Number") {
-    //     return alert("Invalid input. Cargo mass must be a number.")
-
-    };
-
 //Update Shuttle Requirements
 
     //Use template literals to update the <li> elements pilotStatus and copilotStatus to include the pilot & copilot names
     const pilotStatus = document.getElementById("pilotStatus");
     const copilotStatus = document.getElementById("copilotStatus");
-
-    pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`; // update the element with id=pilotStatus to include pilot's name
-    copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`; //update the element with id=copilotStatus to include copilot's name
-
     const launchStatus = document.getElementById("launchStatus");
     const cargoStatus = document.getElementById("cargoStatus");
     const fuelStatus = document.getElementById("fuelStatus");
 
+    pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`; // update the element with id=pilotStatus to include pilot's name
+    copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`; //update the element with id=copilotStatus to include copilot's name
 
-    if (fuelLevel.value >= 10000 && cargoMass.value <= 10000) {
+    if (fuelLevel >= 10000 && cargoMass <= 10000) {
     //If shuttle is ready to launch:
         
         //1. Change the text of launchStatus to green and display "Shuttle ready for launch."
         list.style.visibility = "visible";
         launchStatus.innerHTML = "Shuttle is Ready for Launch."
         launchStatus.style.color = "green";
+        fuelStatus.innerHTML = "Fuel level high enough for launch"
+        cargoStatus.innerHTML = "Cargo mass low enough for launch"
         return;
 
-    } else if (fuelLevel.value < 10000 && cargoMass.value <= 10000) {
+    } else if (fuelLevel < 10000 && cargoMass <= 10000) {
     //If fuelLevel < 10,000 L that is too low: 
     
     //1. Change faultyItems to "visible" with an updated fuelStatus to show there's not enough fuel.
         fuelStatus.innerHTML = `Fuel level too low for launch`
 
     //2. Change the text of <h2>, launchStatus, to "Shuttle not ready for launch."
-        launchStatus.innerHTML = "Shuttle Not Ready or Launch"
+        launchStatus.innerHTML = "Shuttle Not Ready for Launch"
         list.style.visibility = "visible";
 
         //3. Change the color to red.
@@ -102,11 +70,12 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
         launchStatus.setAttribute("style", "color:red;");
         return;
 
-    } else if (fuelLevel.value >= 10000 && cargoMass.value > 10000) {
+    } else if (fuelLevel >= 10000 && cargoMass > 10000) {
     //If cargoMass > 10,000 kg that is too large. 
 
         //1. Change the list to visible with updated categories (too much mass for take off)
         cargoStatus.innerHTML = `Cargo mass too heavy for launch`
+        fuelStatus.innerHTML = `Fuel level high enough for launch`
         list.style.visibility = "visible";
 
         //2. Change the text of launchStatus to "Shuttle not ready for launch."
@@ -116,7 +85,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
         launchStatus.style.color = "red";
         return;
     
-    } else if (fuelLevel.value < 10000 && cargoMass.value > 10000) {
+    } else if (fuelLevel < 10000 && cargoMass > 10000) {
     //If fuelLevel < 10,000 L AND cargoMass > 10,000 kg update both fuel status and cargo status.
         list.style.visibility = "visible";
         fuelStatus.innerHTML = `Fuel level too low for launch`
@@ -126,7 +95,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
         return;     
 
 }
-list.style.visibility = "visible";
+// list.style.visibility = "visible";
 
 }
 

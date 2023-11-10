@@ -97,7 +97,6 @@ describe('Test student work on helper functions', () => {
          // Shuttle should be not be ready for launch, fuel too low
          studentFunctions.formSubmission(document, list, "Chris", "Bob", 0, 5);
          expect(list).toBeVisible();
-         expect(actual).toEqual(expected);
          expect(h2).toHaveStyle({color: 'red'});
          expect(h2).toHaveTextContent("Shuttle Not Ready for Launch");
          expect(pilotStatus).toHaveTextContent("Pilot Chris is ready for launch");

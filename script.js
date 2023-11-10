@@ -15,6 +15,30 @@ window.addEventListener("load", function() {
     let cargoMassInput = document.querySelector("input[name=cargoMass]");
     const faultyItems = document.getElementById("faultyItems");
 
+    //Validate user input.
+
+    if (validateInput(pilotNameInput) === "Empty" || 
+    validateInput(copilotNameInput) === "Empty" ||
+    validateInput(fuelLevelInput) === "Empty" ||
+    validateInput(cargoMassInput) === "Epmty") {
+    return alert("All fields are required!");
+
+} 
+
+
+    if (validateInput(pilotNameInput) === "Is a Number") {
+        return alert("Invalid input. Pilot name is a number.");
+
+    } else if (validateInput(copilotNameInput) === "Is a Number") {
+        return alert("Invalid input. Copilot name is a number.");
+    
+    } else if (validateInput(fuelLevelInput) === "Not a Number") {
+        return alert("Invalid input. Fuel level must be a number.");
+
+    } else if (validateInput(cargoMassInput) === "Not a Number") {
+        return alert("Invalid input. Cargo mass must be a number.")
+
+    };
 
     formSubmission(document, faultyItems, pilotNameInput, copilotNameInput, fuelLevelInput, cargoMassInput);
     // alert("Form submission function ran.");
