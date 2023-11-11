@@ -66,8 +66,8 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     const cargoStatus = document.getElementById("cargoStatus");
     const fuelStatus = document.getElementById("fuelStatus");
 
-    pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`; // update the element with id=pilotStatus to include pilot's name
-    copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`; //update the element with id=copilotStatus to include copilot's name
+    pilotStatus.innerHTML = `Pilot ${pilot.value} is ready for launch`; // update the element with id=pilotStatus to include pilot's name
+    copilotStatus.innerHTML = `Co-pilot ${copilot.value} is ready for launch`; //update the element with id=copilotStatus to include copilot's name
 
     if (fuelLevel.value >= 10000 && cargoMass.value <= 10000) {
     //If shuttle is ready to launch:
@@ -85,7 +85,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     //If fuelLevel < 10,000 L that is too low: 
 
     //1. Change faultyItems to "visible" with an updated fuelStatus to show there's not enough fuel.
-        fuelStatus.innerHTML = `Fuel level too low for launch`
+        fuelStatus.innerHTML = "Fuel level too low for launch"
 
     //2. Change the text of <h2>, launchStatus, to "Shuttle not ready for launch."
         launchStatus.innerHTML = "Shuttle Not Ready for Launch"

@@ -36,7 +36,7 @@ window.addEventListener("load", function() {
     let copilotNameInput = document.querySelector("input[name=copilotName]");
     let fuelLevelInput = document.querySelector("input[name=fuelLevel]");
     let cargoMassInput = document.querySelector("input[name=cargoMass]");
-    const faultyItems = document.getElementById("faultyItems");
+    let faultyItems = document.getElementById("faultyItems");
     event.preventDefault();
 
         //Validate user input.

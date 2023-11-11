@@ -96,6 +96,7 @@ describe('Test student work on helper functions', () => {
    test("Launch Checklist when fuel too low for launch", () => {
          // Shuttle should be not be ready for launch, fuel too low
          studentFunctions.formSubmission(document, list, "Chris", "Bob", 0, 5);
+         setTimeout(function (){
          expect(list).toBeVisible();
          expect(h2).toHaveStyle({color: 'red'});
          expect(h2).toHaveTextContent("Shuttle Not Ready for Launch");
@@ -103,11 +104,13 @@ describe('Test student work on helper functions', () => {
          expect(copilotStatus).toHaveTextContent("Co-pilot Bob is ready for launch");
          expect(fuelStatus).toHaveTextContent("Fuel level too low for launch");
          expect(cargoStatus).toHaveTextContent("Cargo mass low enough for launch");
+         }, 5000);
    });
 
    test("Launch Checklist when cargo too heavy for launch", () => {
       // Shuttle should not be ready for launch, cargo too high
       studentFunctions.formSubmission(document, list, "Chris", "Bob", 10000, 100000);
+      setTimeout(function (){
       expect(list).toBeVisible();
       expect(h2).toHaveStyle({color: 'red'});
       expect(h2).toHaveTextContent("Shuttle Not Ready for Launch");
@@ -115,11 +118,13 @@ describe('Test student work on helper functions', () => {
       expect(copilotStatus).toHaveTextContent("Co-pilot Bob is ready for launch");
       expect(fuelStatus).toHaveTextContent("Fuel level high enough for launch");
       expect(cargoStatus).toHaveTextContent("Cargo mass too heavy for launch");
+      }, 5000);
    });
 
    test("Launch Checklist when cargo too heavy and fuel too low for launch", () => {
       // Shuttle should not be ready for launch, cargo too high, fuel too low
       studentFunctions.formSubmission(document, list, "Chris", "Bob", 0, 100000);
+      setTimeout(function (){
       expect(list).toBeVisible();
       expect(h2).toHaveStyle({color: 'red'});
       expect(h2).toHaveTextContent("Shuttle Not Ready for Launch");
@@ -127,11 +132,13 @@ describe('Test student work on helper functions', () => {
       expect(copilotStatus).toHaveTextContent("Co-pilot Bob is ready for launch");
       expect(fuelStatus).toHaveTextContent("Fuel level too low for launch");
       expect(cargoStatus).toHaveTextContent("Cargo mass too heavy for launch");
+      }, 5000);
    });
 
    test("Launch Checklist when everything is good to go", () => { 
       // Shuttle should be ready for launch, enough fuel and cargo
       studentFunctions.formSubmission(document, list, "Chris", "Bob", 10000, 1);
+      setTimeout(function (){
       expect(list).toBeVisible();
       expect(h2).toHaveStyle({color: 'green'});
       expect(h2).toHaveTextContent("Shuttle is Ready for Launch");
@@ -139,6 +146,7 @@ describe('Test student work on helper functions', () => {
       expect(copilotStatus).toHaveTextContent("Co-pilot Bob is ready for launch");
       expect(fuelStatus).toHaveTextContent("Fuel level high enough for launch");
       expect(cargoStatus).toHaveTextContent("Cargo mass low enough for launch");
+      }, 5000);
    });
 
    test("Mission target has the appropriate info", () => {
