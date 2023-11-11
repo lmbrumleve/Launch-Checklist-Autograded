@@ -95,18 +95,48 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
         return;     
 
 } 
-// list.style.visibility = "visible";
 
 }
 
- async function myFetch() { 
-     let response = await fetch("https://handlers.education.launchcode.org/static/planets.json");
-     let planetsReturned = await response.json()
+//  function myFetch() { 
+//     const fetchPromise = fetch("https://handlers.education.launchcode.org/static/planets.json");
+//     return fetchPromise;
+// };
+//      fetch("https://handlers.education.launchcode.org/static/planets.json").then(function (response){
+//         response.json().then(function (planetsReturned) {
+//             return planetsReturned;
+//         })  
+//         })  
+//  }
+async function myFetch() { 
+    let response = await fetch("https://handlers.education.launchcode.org/static/planets.json");
+    let planetsReturned = await response.json()
+
+    return planetsReturned;
+}
  
-     return planetsReturned;
- }
- console.log(myFetch());
- 
+// async function myFetch() {
+//     let planetsReturned;
+
+//     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then(function (response) {
+
+//     });
+//     return planetsReturned;
+// }
+
+//Starter code:
+// async function myFetch() {
+//     let planetsReturned;
+
+//     planetsReturned = await fetch().then( function(response) {
+//         });
+
+//     return planetsReturned;
+// }
+
+// function pickPlanet(planets) {
+// }
+
  function pickPlanet(planets) {
     let randomPlanetIndex = Math.floor(Math.random()*planets.length);
     let randomPlanet = planets[randomPlanetIndex];
