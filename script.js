@@ -1,7 +1,7 @@
 // Write your JavaScript code here!
 
 window.addEventListener("load", function() {
-    
+
     let listedPlanets;
     let listedPlanetsResponse = myFetch();
     listedPlanetsResponse.then(function (result) {
@@ -31,41 +31,42 @@ window.addEventListener("load", function() {
     let form = document.querySelector("form");
     form.addEventListener("submit", function(event) {
         // alert("Submit clicked.");
-        event.preventDefault();
 
     let pilotNameInput = document.querySelector("input[name=pilotName]");
     let copilotNameInput = document.querySelector("input[name=copilotName]");
     let fuelLevelInput = document.querySelector("input[name=fuelLevel]");
     let cargoMassInput = document.querySelector("input[name=cargoMass]");
     const faultyItems = document.getElementById("faultyItems");
+    event.preventDefault();
 
-    //Validate user input.
-
-    if (validateInput(pilotNameInput) === "Empty" || 
-    validateInput(copilotNameInput) === "Empty" ||
-    validateInput(fuelLevelInput) === "Empty" ||
-    validateInput(cargoMassInput) === "Epmty") {
-    return alert("All fields are required!");
-
-} 
-
-
-    if (validateInput(pilotNameInput) === "Is a Number") {
-        return alert("Invalid input. Pilot name is a number.");
-
-    } else if (validateInput(copilotNameInput) === "Is a Number") {
-        return alert("Invalid input. Copilot name is a number.");
+        //Validate user input.
+console.log(pilotNameInput.value, copilotNameInput.value, fuelLevelInput.value, cargoMassInput.value);
+        if (validateInput(pilotNameInput.value) === "Empty" || 
+        validateInput(copilotNameInput.value) === "Empty" ||
+        validateInput(fuelLevelInput.value) === "Empty" ||
+        validateInput(cargoMassInput.value) === "Empty") {
+        return alert("All fields are required!");
     
-    } else if (validateInput(fuelLevelInput) === "Not a Number") {
-        return alert("Invalid input. Fuel level must be a number.");
-
-    } else if (validateInput(cargoMassInput) === "Not a Number") {
-        return alert("Invalid input. Cargo mass must be a number.")
-
-    };
+    } 
+    
+    
+        if (validateInput(pilotNameInput.value) === "Is a Number") {
+            return alert("Invalid input. Pilot name is a number.");
+    
+        } else if (validateInput(copilotNameInput.value) === "Is a Number") {
+            return alert("Invalid input. Copilot name is a number.");
+        
+        } else if (validateInput(fuelLevelInput.value) === "Not a Number") {
+            return alert("Invalid input. Fuel level must be a number.");
+    
+        } else if (validateInput(cargoMassInput.value) === "Not a Number") {
+            return alert("Invalid input. Cargo mass must be a number.")
+    
+        };
 
     formSubmission(document, faultyItems, pilotNameInput, copilotNameInput, fuelLevelInput, cargoMassInput);
     // alert("Form submission function ran.");
+
     });
     
  });

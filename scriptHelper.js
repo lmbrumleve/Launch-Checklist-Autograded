@@ -32,6 +32,31 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
  
  function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
 
+//     //Validate user input.
+
+//     if (validateInput(pilot.value) === "Empty" || 
+//     validateInput(copilot.value) === "Empty" ||
+//     validateInput(fuelLevel.value) === "Empty" ||
+//     validateInput(cargoMass.value) === "Epmty") {
+//     return alert("All fields are required!");
+
+// } 
+
+
+//     if (validateInput(pilot.value) === "Is a Number") {
+//         return alert("Invalid input. Pilot name is a number.");
+
+//     } else if (validateInput(copilot.value) === "Is a Number") {
+//         return alert("Invalid input. Copilot name is a number.");
+    
+//     } else if (validateInput(fuelLevel.value) === "Not a Number") {
+//         return alert("Invalid input. Fuel level must be a number.");
+
+//     } else if (validateInput(cargoMass.value) === "Not a Number") {
+//         return alert("Invalid input. Cargo mass must be a number.")
+
+//     };
+
 //Update Shuttle Requirements
 
     //Use template literals to update the <li> elements pilotStatus and copilotStatus to include the pilot & copilot names
