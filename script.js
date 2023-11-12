@@ -64,7 +64,7 @@ console.log(pilotNameInput.value, copilotNameInput.value, fuelLevelInput.value, 
     
         };
 
-    formSubmission(document, faultyItems, pilotNameInput, copilotNameInput, fuelLevelInput, cargoMassInput);
+    formSubmission(document, faultyItems, pilotNameInput.value, copilotNameInput.value, fuelLevelInput.value, cargoMassInput.value);
     // alert("Form submission function ran.");
 
     });

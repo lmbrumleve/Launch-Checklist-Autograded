@@ -66,10 +66,10 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     const cargoStatus = document.getElementById("cargoStatus");
     const fuelStatus = document.getElementById("fuelStatus");
 
-    pilotStatus.innerHTML = `Pilot ${pilot.value} is ready for launch`; // update the element with id=pilotStatus to include pilot's name
-    copilotStatus.innerHTML = `Co-pilot ${copilot.value} is ready for launch`; //update the element with id=copilotStatus to include copilot's name
+    pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`; // update the element with id=pilotStatus to include pilot's name
+    copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`; //update the element with id=copilotStatus to include copilot's name
 
-    if (fuelLevel.value >= 10000 && cargoMass.value <= 10000) {
+    if (fuelLevel >= 10000 && cargoMass <= 10000) {
     //If shuttle is ready to launch:
 
         //1. Change the text of launchStatus to green and display "Shuttle ready for launch."
@@ -81,11 +81,13 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
         return;
 
-    } else if (fuelLevel.value < 10000 && cargoMass.value <= 10000) {
+    } else if (fuelLevel < 10000 && cargoMass <= 10000) {
     //If fuelLevel < 10,000 L that is too low: 
 
     //1. Change faultyItems to "visible" with an updated fuelStatus to show there's not enough fuel.
         fuelStatus.innerHTML = "Fuel level too low for launch"
+        cargoStatus.innerHTML = "Cargo mass low enough for launch"
+
 
     //2. Change the text of <h2>, launchStatus, to "Shuttle not ready for launch."
         launchStatus.innerHTML = "Shuttle Not Ready for Launch"
@@ -97,7 +99,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
         return;
 
-    } else if (fuelLevel.value >= 10000 && cargoMass.value > 10000) {
+    } else if (fuelLevel >= 10000 && cargoMass > 10000) {
     //If cargoMass > 10,000 kg that is too large. 
 
         //1. Change the list to visible with updated categories (too much mass for take off)
@@ -113,7 +115,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
         return;
     
-    } else if (fuelLevel.value < 10000 && cargoMass.value > 10000) {
+    } else if (fuelLevel < 10000 && cargoMass > 10000) {
     //If fuelLevel < 10,000 L AND cargoMass > 10,000 kg update both fuel status and cargo status.
 
         list.style.visibility = "visible";
